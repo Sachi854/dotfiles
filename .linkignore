@@ -1,0 +1,6 @@
+.linkignore
+.gti
+.gitignore
+.scripts
+.idea
+.vscode

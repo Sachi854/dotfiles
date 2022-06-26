@@ -1,0 +1,21 @@
+/*
+/.**
+
+# white list
+!/.config/
+!/.config/**
+!/.git_template/
+!/.git_template/**
+!/.scripts/
+!/.scripts/**
+!/LICENSE/
+!/LICENSE/**
+!/scripts/
+!/scripts/**
+!/.gitconfig
+!/.gitignore
+!/.gitignore_global
+!/.linkignore
+!/.xremap
+!/install.sh
+!/README.md

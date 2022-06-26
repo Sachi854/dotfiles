@@ -1,0 +1,82 @@
+[user]
+  name  = Sachi854 
+  email = a2211501@sendai-nct.jp
+
+[alias]
+  st      = status
+  cho     = checkout
+  chob    = checkout -b
+  b       = branch
+  p       = push
+  cm      = commit
+  alls    = config --get-regexp alias.*
+  shp     = stash pop
+  sth     = stash save
+  today   = log --oneline --since='15 hour ago'
+  last    = log -1 HEAD
+  d       = diff HEAD
+  d1      = diff HEAD~
+  d2      = diff HEAD~2
+  d3      = diff HEAD~3
+  grh     = !"git log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(bold white)%s%C(reset)  %C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative --color|less -r -R "
+  mg      = merge
+  ff      = merge --ff
+  db      = !git branch | grep -v 'master' | xargs git branch -d 2> /dev/null
+  pin     = push -u origin
+  rename  = commit --amend
+  ref     = reflog
+  bd      = push origin --delete
+  rget    = remote prune origin
+  lg      = log
+  rereset = reset --hard HEAD@{1}
+  alias   = !"if test -z $1; then loop=; for k in `git config --get-regexp ^alias\\. | sort | sed -e 's/^alias\\.\\(\\S*\\).*/\\1/g'`; do echo -n $k; loop="${loop}1"; if test ${#loop} -lt 5; then echo -n '\t'; else echo; loop=; fi; done; exit; fi; git config --list | grep ^alias\\.$1= | sed -e s/^alias\\.//; exit;"
+  delcm   = reset --soft HEAD^
+  a       = add .
+
+[push]
+  default = simple
+
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean   = git-lfs clean -- %f
+  smudge  = git-lfs smudge -- %f
+
+[core]
+  excludesfile = ~/.gitignore_global
+  autoCRLF = false
+  editor = code --wait
+
+[init]
+  templatedir = ~/.git_template
+
+[commit]
+  template = ~/.git_template/.git_commit_log_temp
+  tool = vscode
+
+[merge]
+  template = ~/.git_template/.git_commit_log_temp
+  tool = intellij
+  ff = false
+
+[pull]
+  ff = only
+
+[diff]
+  tool = vscode
+
+[color]
+  ui = auto
+
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+
+[mergetool "intellij"]
+  cmd = idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+  trustExitCode = true
+
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
+[difftool "intellij"]
+  cmd = idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
