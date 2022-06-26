@@ -5,11 +5,12 @@ My Dotfiles. Fedora only.
 - [Dotfiles](#dotfiles)
 - [Table of Contents](#table-of-contents)
 - [QuickStart](#quickstart)
-- [EnvironmentBuilding](#environmentbuilding)
+- [install.sh](#installsh)
+- [Environment](#environment)
   - [SSH-Key](#ssh-key)
   - [Vivaldi](#vivaldi)
   - [JetBrains Toolbox ans InteIIj IDEA](#jetbrains-toolbox-ans-inteiij-idea)
-  - [Install VSCode](#install-vscode)
+  - [VSCode](#vscode)
   - [Xremap](#xremap)
   - [Systemd](#systemd)
 - [Tips](#tips)
@@ -42,7 +43,18 @@ chmod +x ./install.sh
 ./install.sh --all
 ```
 
-# EnvironmentBuilding
+# install.sh
+```bash
+install.sh --all
+# Install Dotfiles etc. Can also be used for updates.
+install.sh --dot
+# Install dependent package.
+install.sh --package
+# Enable deamon.
+install.sh --deamon
+```
+
+# Environment
 ## SSH-Key
 ```bash
 ssh-keygen -t ed25519 -C "a2211501@sendai-nct.jp"
@@ -78,7 +90,7 @@ toolbox -> Tools -> IDEA -> Settings -> Configuration -> Geterate shell scripts 
 Shell scripts location => $HOME/bin
 ```
 
-## Install VSCode
+## VSCode
 Add key and repository, If you run install.sh, you don't need it.
 
 ```bash
