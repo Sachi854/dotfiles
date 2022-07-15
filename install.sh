@@ -56,7 +56,8 @@ function main() {
   if [[ "$is_dot" = true ]]; then
     source $current_dir/.scripts/install_dots.sh
   fi
-  
+
+  source $current_dir/.scripts/show_deamons.sh
   print_default "finished $(basename "${BASH_SOURCE[0]:-$0}") !!"
 }
 
