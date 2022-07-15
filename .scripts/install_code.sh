@@ -15,7 +15,7 @@ function main() {
         command dnf check-update
     fi
     # install code
-    command sudo dnf install code
+    command sudo dnf install -y code
 }
 
 main "$@"
