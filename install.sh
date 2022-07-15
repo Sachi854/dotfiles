@@ -55,9 +55,9 @@ function main() {
     command dnf check-update
     # add PATH
     ## cargo
-    command echo 'export PATH="$HOME/.cargo/bin:PATH"' >> $HOME/.bash_profile
+    command echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> $HOME/.bash_profile
     ## scripts
-    command echo 'export PATH="$HOME/scripts:PATH"' >> $HOME/.bash_profile
+    command echo 'export PATH="$HOME/scripts:$PATH"' >> $HOME/.bash_profile
   fi
 
   if [[ "$is_package" = true ]]; then
