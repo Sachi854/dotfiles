@@ -37,6 +37,8 @@ My Dotfiles. Fedora only.
 
 # QuickStart
 ```bash
+# sudo rpm --rebuilddb
+sudo dnf upgrade -y
 git@github.com:Sachi854/dotfiles.git
 cd dotfiles
 chmod +x ./install.sh
@@ -50,8 +52,6 @@ install.sh --all
 install.sh --dot
 # Install dependent package.
 install.sh --package
-# Enable deamon.
-install.sh --deamon
 ```
 
 # Environment
