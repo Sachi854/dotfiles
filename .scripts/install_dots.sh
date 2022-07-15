@@ -6,7 +6,15 @@ set -ue
 ##          functions                                         ##
 #--------------------------------------------------------------#
 
-source $(dirname "${BASH_SOURCE[0]:-$0}")/functions.sh
+function print_default() {
+  echo -e "$*"
+}
+
+function mkdir_not_exist() {
+  if [ ! -d "$1" ]; then
+    mkdir -p "$1"
+  fi
+}
 
 function backup_and_link() {
 	local link_src_file=$1
@@ -106,7 +114,7 @@ function main() {
 	local dotfiles_dir
 	dotfiles_dir="$(builtin cd "$current_dir" && git rev-parse --show-toplevel)"
 
-    linkignore=()
+  linkignore=()
 	if [[ -e "$dotfiles_dir/.linkignore" ]]; then
 		mapfile -t linkignore <"$dotfiles_dir/.linkignore"
 	fi
@@ -121,7 +129,7 @@ function main() {
 			backup_and_link "$f" "$HOME" "$backupdir"
 		done
 
-        # scripts
+    # scripts
 		backup_and_link "$dotfiles_dir"/scripts/ "$HOME" "$backupdir"
 		command chmod +x "$dotfiles_dir"/scripts/*
 	fi
