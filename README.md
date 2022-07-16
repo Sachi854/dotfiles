@@ -9,7 +9,7 @@ My Dotfiles. Fedora only.
 - [Environment](#environment)
   - [SSH-Key](#ssh-key)
   - [Vivaldi](#vivaldi)
-  - [JetBrains Toolbox ans InteIIj IDEA](#jetbrains-toolbox-ans-inteiij-idea)
+  - [JetBrains Toolbox and InteIIj IDEA](#jetbrains-toolbox-and-inteiij-idea)
   - [VSCode](#vscode)
   - [Xremap](#xremap)
   - [Systemd](#systemd)
@@ -69,7 +69,7 @@ Download [here](https://vivaldi.com) and install.
 sudo dnf install vivaldi-xx.x86_64.rpm
 ```
 
-## JetBrains Toolbox ans InteIIj IDEA
+## JetBrains Toolbox and InteIIj IDEA
 Download [here](https://www.jetbrains.com/toolbox-app/) and install.
 
 ```bash
