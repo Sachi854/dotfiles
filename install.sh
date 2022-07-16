@@ -57,8 +57,16 @@ function main() {
     source $current_dir/.scripts/install_dots.sh
   fi
 
+  # 終了メッセージ表示
+  print_default "-----------------------------------"
   source $current_dir/.scripts/show_deamons.sh
+  print_default "-----------------------------------"
+  print_default "Configure Git Username and Email"
+  print_default "code ~/.gitconfig"
+  print_default "-----------------------------------"
   print_default "finished $(basename "${BASH_SOURCE[0]:-$0}") !!"
+  print_default "-----------------------------------"
+
 }
 
 main "$@"
