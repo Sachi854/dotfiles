@@ -39,7 +39,8 @@ My Dotfiles. Fedora only.
 ```bash
 # sudo rpm --rebuilddb
 sudo dnf upgrade -y
-git@github.com:Sachi854/dotfiles.git
+git clone https://github.com/Sachi854/dotfiles.git
+#git clone git@github.com:Sachi854/dotfiles.git
 cd dotfiles
 chmod +x ./install.sh
 ./install.sh --all
@@ -57,7 +58,7 @@ install.sh --package
 # Environment
 ## SSH-Key
 ```bash
-ssh-keygen -t ed25519 -C "a2211501@sendai-nct.jp"
+ssh-keygen -t ed25519 -C "email@com"
 cat ~/.ssh/id_ed25519.pub 
 ```
 
