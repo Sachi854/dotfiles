@@ -1,6 +1,6 @@
 [user]
-  name  = xx
-  email = yy
+  name  = NAME
+  email = MAIL
 
 [alias]
   st      = status
@@ -45,10 +45,12 @@
 [core]
   excludesfile = ~/.gitignore_global
   autoCRLF = false
-  editor = code --wait
+  #editor = code --wait
+  editor = vim
 
 [init]
   templatedir = ~/.git_template
+	defaultBranch = main
 
 [commit]
   template = ~/.git_template/.git_commit_log_temp
