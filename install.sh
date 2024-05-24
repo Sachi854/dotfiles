@@ -1,72 +1,49 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -ue
+# インストール元ディレクトリ（このスクリプトが存在するディレクトリ）を取得
+SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-function print_default() {
-  echo -e "$*"
+# バックアップディレクトリの作成
+BACKUP_DIR="$HOME/.dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$BACKUP_DIR"
+
+# メッセージ表示用の関数
+function print_message {
+    local message=$1
+    echo "=============================="
+    echo "$message"
+    echo "=============================="
 }
 
-#--------------------------------------------------------------#
-##          main                                              ##
-#--------------------------------------------------------------#
+# Dotfileのバックアップ及びコピー関数
+function backup_and_copy {
+    local file=$1
 
-function main() {
-  # 作業dirを取る
-  local current_dir
-  current_dir=$(dirname "${BASH_SOURCE[0]:-$0}")
-  # functionの呼び出し
-  local is_all="false"
-  local is_dot="false"
-  local is_package="false"
+    # ファイルが存在するかチェック
+    if [ -e "$HOME/$file" ]; then
+        # バックアップディレクトリへ移動
+        mv "$HOME/$file" "$BACKUP_DIR/"
+        echo "バックアップ: $file を $BACKUP_DIR に移動しました。"
+    fi
 
-  while [ $# -gt 0 ]; do
-    case ${1} in
-      --all)
-        is_dot="true"
-        is_package="true"
-        ;;
-      --dot)
-        is_dot="true"
-        ;;
-      --package)
-        is_package="true"
-        ;;
-      *)
-        echo "[ERROR] Invalid arguments '${1}'"
-        usage
-        exit 1
-        ;;
-    esac
-    shift
-  done
-
-  # scripts へパス通す
-  local p="$PATH"
-  local h="$HOME"
-  local re=".*$h/scripts.*"
-  if ! [[ $p =~ $re ]]; then
-      command echo 'export PATH="$HOME/scripts:$PATH"' >> $HOME/.bash_profile
-  fi
-
-  if [[ "$is_package" = true ]]; then
-    source $current_dir/.scripts/install_code.sh
-    source $current_dir/.scripts/install_xremap.sh
-  fi
-
-  if [[ "$is_dot" = true ]]; then
-    source $current_dir/.scripts/install_dots.sh
-  fi
-
-  # 終了メッセージ表示
-  print_default "-----------------------------------"
-  source $current_dir/.scripts/show_deamons.sh
-  print_default "-----------------------------------"
-  print_default "Configure Git Username and Email"
-  print_default "code ~/.gitconfig"
-  print_default "-----------------------------------"
-  print_default "finished $(basename "${BASH_SOURCE[0]:-$0}") !!"
-  print_default "-----------------------------------"
-
+    # ファイルをコピー
+    cp -r "$SOURCE_DIR/$file" "$HOME/$file"
+    echo "コピー: $file を $HOME にコピーしました。"
 }
 
-main "$@"
+# インストール開始
+print_message "インストール開始"
+
+# インストール元ディレクトリから . で始まるファイルとディレクトリを検索
+FILES_TO_COPY=$(find "$SOURCE_DIR" -maxdepth 1 -name ".*" -not -name "." -not -name "..")
+
+# Dotfileのバックアップ及びコピーを実行
+for file in $FILES_TO_COPY; do
+    # ファイルパスからファイル名を抽出
+    file_name=$(basename "$file")
+    backup_and_copy "$file_name"
+done
+
+# インストール終了メッセージ
+print_message "Git Username and Emailを設定してください（~/.gitconfig）"
+print_message "インストール完了"
