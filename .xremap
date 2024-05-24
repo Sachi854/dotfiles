@@ -1,4 +1,0 @@
-modmap:
-  - name: IME
-    remap:
-      CapsLock: KEY_HENKAN
