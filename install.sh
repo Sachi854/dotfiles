@@ -35,7 +35,8 @@ function backup_and_copy {
 print_message "インストール開始"
 
 # インストール元ディレクトリから . で始まるファイルとディレクトリを検索
-FILES_TO_COPY=$(find "$SOURCE_DIR" -maxdepth 1 -name ".*" -not -name "." -not -name "..")
+FILES_TO_COPY=$(find "$SOURCE_DIR" -maxdepth 1 -name ".*" -not -name "." -not -name ".." -not -name ".git")
+
 
 # Dotfileのバックアップ及びコピーを実行
 for file in $FILES_TO_COPY; do
