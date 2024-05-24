@@ -1,0 +1,51 @@
+# とりあえず入れてみて重いなら lazy に移す
+
+# clojure {{{
+# fzf {{{
+[[plugins]]
+repo = 'junegunn/fzf'
+# }}}
+
+# sexp {{{
+[[plugins]]
+repo = 'guns/vim-sexp'
+on_ft = ['clojure']
+# }}}
+
+# ined {{{
+[[plugins]]
+repo = 'liquidz/vim-iced'
+on_ft = ['clojure']
+# }}}
+# }}}
+
+# en2ja {{{
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+# }}}
+
+# eazy regex {{{
+[[plugins]]
+repo = 'markonm/traces.vim'
+# }}}
+
+# translate lang {{{
+# visual -> :Translate
+[[plugins]]
+repo = 'skanehira/translate.vim'
+# }}}
+
+# Markdown {{{
+# Preview of md {{{
+[[plugins]]
+repo = 'previm/previm'
+on_ft = ['markdown']
+# }}}
+
+# Make table of md {{{
+# 1,2,3 -> visual -> :TableMake!
+[[plugins]]
+repo = 'mattn/vim-maketable'
+on_ft = ['markdown']
+# }}}
+# }}}
