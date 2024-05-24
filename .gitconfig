@@ -1,6 +1,6 @@
 [user]
-  name  = xx
-  email = yy
+  name  = NAME
+  email = EMAIL
 
 [alias]
   st      = status
@@ -56,7 +56,7 @@
 
 [merge]
   template = ~/.git_template/.git_commit_log_temp
-  tool = intellij
+  tool = vscode
   ff = false
 
 [pull]
