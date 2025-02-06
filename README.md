@@ -165,7 +165,7 @@ sudo systemctl restart sshd.service
 File transfer.
 
 ```shell
-scp -i {~/.ssh/id_gcp.pub} {localfile} -P {port} {user}{@34.82.195.120}:{dir}
+scp -i {~/.ssh/id_gcp.pub} {localfile} -P {port} {user}@{host-ip:{dir}
 ```
 
 ## ssh-copy-id
@@ -179,7 +179,7 @@ ssh-copy-id -i {public-key-path} -P {port} {user}@{host-ip}:{dir}
 
 ```shell
 ssh sshd-server
-curl -o ssh-user-add.sh https://raw.githubusercontent.com/ryojiagatsuma1004/dotfiles/master/scripts/ssh-user-add.sh
+curl -o ssh-user-add.sh https://raw.githubusercontent.com/Sachi854/dotfiles/master/scripts/ssh-user-add.sh
 chmod +x ./ssh-user-add.sh
 ./ssh-user-add.sh -u {username} -p {public-key-path}
 ```
